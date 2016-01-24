@@ -32,7 +32,6 @@ if(isset($_POST['setcountry'])) //апдейты базы при отправк�
 }
 else if(isset($_POST['setcity']))
 {
-	//echo "INSERT INTO Cities (cityName, countryId) VALUES ( '".$_POST['setcity']."',".$_POST['myCountries'].")";
 	$_POST['setcity'] = htmlspecialchars($_POST['setcity'], ENT_QUOTES,"UTF-8");
 	
 	if($_POST['ondelete'])//при удалении
@@ -44,7 +43,6 @@ $Y = mysqli_query($link,"INSERT INTO Cities (cityName, countryId) VALUES ( '".$_
 else if(isset($_POST['setlan']))
 {
 	$_POST['setlan'] = htmlspecialchars($_POST['setlan'],ENT_QUOTES,"UTF-8");
-	//echo var_dump($_POST);
 	$counter = 0;
 
 	$res = mysqli_query($link,"SELECT IdCities FROM Languages WHERE language = '".$_POST['setlan']."'");
@@ -77,7 +75,6 @@ else if(isset($_POST['setlan']))
 	{
 	mysqli_query($link,"INSERT INTO Languages ( IdCities, language ) VALUES ('".$_POST['val1']."','".$_POST['setlan']."')");
 
-		//echo "INSERT INTO Languages ( IdCities, language ) VALUES ('".$_POST['val1']."','".$_POST['setlan']."')";
 	}
 
 	if($_POST['ondelete'] && mysqli_num_rows($res)!=0) //при удалении языка города
@@ -179,14 +176,12 @@ var objSelt = document.getElementById("sel2");
 		else if(ip[i].checked && ip[i].id == "r2")
 		{
 			mes.name = "setcity";
-			//document.getElementById('firstval').value = objSel.options[objSel.selectedIndex].value;
 		}
 		else if(ip[i].checked && ip[i].id == "r3")
 		{
 			mes.name = "setlan";
 			//получение id выделенного города
 			document.getElementById('firstval').value = city2[objSelt.options[objSelt.selectedIndex].text];
-			//alert(objSelt.options[objSelt.selectedIndex].text);
 		}
     	}
 }
@@ -194,7 +189,6 @@ var objSelt = document.getElementById("sel2");
 function change(){
 var objSel = document.getElementById("sel1");
 var objSel1 = document.getElementById("sel2");
-//countries.innerHTML = "";
 cityes.innerHTML = "";
 
 objSel1.options.length = 0;//очищаем список городов
@@ -215,7 +209,6 @@ for(var p in city){
 }
 //countries.innerHTML = countries.innerHTML +"<br />"+ objSel.options[objSel.selectedIndex].text;
 
-//objSel.selectedIndex = 0;
 change1(); //зависимый список языков
 }
 
@@ -229,11 +222,6 @@ for(var p in language){
 
 	if(objSel1.selectedIndex != -1)
 	{
-		//language[p] айдишники городов в которых применяеться этот язык p
-		//alert(language[p]);
-		//if(language[p].split(",").indexOf(city2[p]))
-		//var i = 0;
-		
 			if(language[p].indexOf(Number(objSel1.options[objSel1.selectedIndex].id)) != -1) //нахождение id города в списке языков
 			{
 				languages.innerHTML = languages.innerHTML +"<br />"+ p;
@@ -242,7 +230,6 @@ for(var p in language){
 		
 	}
 }
-//objSel1.selectedIndex = 0;
 objSel2.selectedIndex = 0;
 setname();
 }
@@ -290,7 +277,6 @@ document.addEventListener("DOMContentLoaded", firstId);
 </script>
 
 </form>
-
 
 </body>
 
